@@ -1,16 +1,17 @@
 from confluent_kafka import Consumer, KafkaException, KafkaError
-from config import TOPIC
+# from config import TOPIC
 
 
 def consume():
     # Configure the Consumer
     c = Consumer({
-        'bootstrap.servers': 'localhost:19092',  # Assuming you're running this on the same machine as the compose
-        'group.id': 'python-consumer',
+        'bootstrap.servers': '34.101.224.54:19092',  # Assuming you're running this on the same machine as the compose
+        'group.id': 'python-consumer-kharisma',
         'auto.offset.reset': 'latest'
     })
 
     # Subscribe to the topic
+    TOPIC="stock_json_topic_kharisma"
     c.subscribe([TOPIC])
 
     # Process messages
